@@ -89,6 +89,26 @@
                         </div>
                     </div>
 
+                    <!-- Lucky Extras Row -->
+                    <div class="lucky-extras-row">
+                        <div class="lucky-extra-item">
+                            <span class="lucky-extra-label">행운의 색</span>
+                            <span class="lucky-extra-val"><span class="lucky-color-dot" id="lucky-color-dot"></span><span id="lucky-color-name">골드</span></span>
+                        </div>
+                        <div class="lucky-extra-item">
+                            <span class="lucky-extra-label">행운의 숫자</span>
+                            <span class="lucky-extra-val" id="lucky-number">7</span>
+                        </div>
+                        <div class="lucky-extra-item">
+                            <span class="lucky-extra-label">행운의 방향</span>
+                            <span class="lucky-extra-val" id="lucky-direction">동쪽 ☀️</span>
+                        </div>
+                        <div class="lucky-extra-item">
+                            <span class="lucky-extra-label">오늘의 키워드</span>
+                            <span class="lucky-extra-val keyword" id="lucky-keyword">도전</span>
+                        </div>
+                    </div>
+
                     <div class="fortune-category-grid" id="fortune-grid">
                         <!-- Dynamic content -->
                     </div>
@@ -98,44 +118,36 @@
                     </div>
                 </div>
 
-                <!-- Lucky Item Card -->
+                <!-- Lucky Character Card -->
                 <div class="lucky-card glass-card" id="lucky-card">
-                    <h2 class="lucky-title">오늘의 행운 아이템 🎁</h2>
-                    <div class="lucky-display">
-                        <div class="lucky-item-box" id="lucky-character-box">
-                            <div class="lucky-emoji" id="lucky-character">🐼</div>
-                            <span class="lucky-label">행운의 친구</span>
-                            <span class="lucky-name" id="lucky-character-name">레드 판다</span>
-                        </div>
-                        <div class="lucky-divider">+</div>
-                        <div class="lucky-item-box" id="lucky-food-box">
-                            <div class="lucky-emoji" id="lucky-food">🍩</div>
-                            <span class="lucky-label">오늘의 행운 음식</span>
-                            <span class="lucky-name" id="lucky-food-name">도넛</span>
-                        </div>
+                    <h2 class="lucky-title">🐾 오늘의 행운 동물</h2>
+                    <div class="lucky-char-center">
+                        <div class="lucky-emoji" id="lucky-character">🐼</div>
+                        <span class="lucky-name" id="lucky-character-name">판다</span>
                     </div>
-                </div>
                     <p class="lucky-tip" id="lucky-tip"></p>
                 </div>
 
-                <!-- Food Character Card (NEW!) -->
-                <div class="food-char-card glass-card" id="food-character-card">
-                    <h2 class="food-char-title">🍽️ 오늘의 행운 음식 캐릭터</h2>
-                    <div class="food-char-body">
-                        <div class="food-char-avatar">
-                            <div class="food-char-big-emoji" id="food-char-emoji">🍩</div>
-                            <div class="food-char-face" id="food-char-face">( ˘ᵕ˘ )</div>
+                <!-- 🎮 Game Recommendation Card -->
+                <div class="game-char-card glass-card" id="game-char-card">
+                    <h2 class="game-card-title">🎮 오늘의 운세 맞춤 게임 추천</h2>
+                    <div class="game-char-body">
+                        <div class="game-char-avatar">
+                            <div class="game-char-big-emoji" id="game-char-emoji">⚡</div>
+                            <div class="game-char-face" id="game-char-face">(ง •̀_•́)ง</div>
                         </div>
-                        <div class="food-char-info">
-                            <div class="food-char-names">
-                                <span class="food-char-charname" id="food-char-charname">도나짱</span>
-                                <span class="food-char-tag" id="food-char-name">도넛</span>
+                        <div class="game-char-info">
+                            <div class="game-name-row">
+                                <span class="game-char-name" id="game-char-name">자그레우스</span>
+                                <span class="game-platform-badge" id="game-platform">Steam</span>
                             </div>
-                            <p class="food-char-personality" id="food-char-personality">달달하고 긍정적인 에너지 발산형</p>
-                            <ul class="food-char-traits" id="food-char-traits"></ul>
+                            <p class="game-title" id="game-title">Hades</p>
+                            <p class="game-genre" id="game-genre">⚔️ 로그라이크 액션</p>
+                            <p class="game-match-reason" id="game-match-reason"></p>
                         </div>
                     </div>
-                    <p class="food-char-tip" id="food-char-tip"></p>
+                    <p class="game-char-tip" id="game-char-tip"></p>
+                    <a class="game-play-btn" id="game-play-btn" href="#" target="_blank" rel="noopener">▶ Steam에서 보기</a>
                 </div>
 
                 <!-- Mid-Content Ad -->
