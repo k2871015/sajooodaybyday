@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘의 운세 | Saju Day by Day ✨</title>
+    <meta name="description" content="오늘의 운세를 확인하고, 당신의 운세에 맞는 귀여운 행운의 캐릭터와 음식을 발견해보세요! 매일 새로운 행운이 기다립니다.">
+    <meta property="og:title" content="오늘의 운세 | Saju Day by Day ✨">
+    <meta property="og:description" content="당신만의 오늘의 운세와 행운의 캐릭터를 확인해보세요!">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3114463937796990" crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Decorative Background Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="page-wrapper">
+
+        <!-- ===== HEADER ===== -->
+        <header class="site-header">
+            <div class="logo">
+                <span class="logo-icon">🔮</span>
+                <span class="logo-text">Saju Day by Day</span>
+            </div>
+            <p class="site-tagline">오늘의 우주가 당신에게 전하는 메시지</p>
+        </header>
+
+        <!-- ===== TOP LEADERBOARD AD ===== -->
+        <div class="ad-slot leaderboard-ad glass-card">
+            <span class="ad-badge">Advertisement</span>
+            <!-- Replace below with actual AdSense ad unit code -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-3114463937796990"
+                 data-ad-slot="auto"
+                 data-ad-format="horizontal"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <main id="main-content">
+
+            <!-- Input Section -->
+            <section class="input-section glass-card" id="input-section">
+                <h1 class="section-title">오늘의 운세 보기 ✨</h1>
+                <p class="section-subtitle">이름을 입력하고 당신만의 오늘을 확인해보세요!</p>
+
+                <div class="form-group">
+                    <label for="user-name">이름</label>
+                    <input type="text" id="user-name" placeholder="이름을 입력하세요" autocomplete="off" maxlength="10">
+                </div>
+
+                <div class="form-group">
+                    <label>오늘 기분이 어때요?</label>
+                    <div class="mood-selector" id="mood-selector">
+                        <button class="mood-btn active" data-mood="happy" type="button">😊 행복해</button>
+                        <button class="mood-btn" data-mood="meh" type="button">😐 보통이야</button>
+                        <button class="mood-btn" data-mood="tired" type="button">😴 피곤해</button>
+                    </div>
+                </div>
+
+                <button class="cta-btn" id="fortune-btn" type="button">
+                    <span class="btn-text">🔮 오늘의 운세 보기</span>
+                    <span class="btn-shimmer"></span>
+                </button>
+            </section>
+
+            <!-- Result Section (hidden initially) -->
+            <section class="result-section" id="result-section" style="display:none;">
+
+                <!-- Fortune Card -->
+                <div class="fortune-card glass-card" id="fortune-card">
+                    <div class="fortune-header">
+                        <span class="fortune-date" id="fortune-date"></span>
+                        <span class="fortune-user-name" id="fortune-user-name"></span>
+                    </div>
+
+                    <div class="fortune-score-ring" id="score-ring">
+                        <div class="score-inner">
+                            <span class="score-number" id="score-number">88</span>
+                            <span class="score-label">운세 점수</span>
+                        </div>
+                    </div>
+
+                    <div class="fortune-category-grid" id="fortune-grid">
+                        <!-- Dynamic content -->
+                    </div>
+
+                    <div class="fortune-message-box">
+                        <p class="fortune-main-message" id="fortune-message"></p>
+                    </div>
+                </div>
+
+                <!-- Lucky Item Card -->
+                <div class="lucky-card glass-card" id="lucky-card">
+                    <h2 class="lucky-title">오늘의 행운 아이템 🎁</h2>
+                    <div class="lucky-display">
+                        <div class="lucky-item-box" id="lucky-character-box">
+                            <div class="lucky-emoji" id="lucky-character">🐼</div>
+                            <span class="lucky-label">행운의 친구</span>
+                            <span class="lucky-name" id="lucky-character-name">레드 판다</span>
+                        </div>
+                        <div class="lucky-divider">+</div>
+                        <div class="lucky-item-box" id="lucky-food-box">
+                            <div class="lucky-emoji" id="lucky-food">🍩</div>
+                            <span class="lucky-label">오늘의 행운 음식</span>
+                            <span class="lucky-name" id="lucky-food-name">도넛</span>
+                        </div>
+                    </div>
+                </div>
+                    <p class="lucky-tip" id="lucky-tip"></p>
+                </div>
+
+                <!-- Food Character Card (NEW!) -->
+                <div class="food-char-card glass-card" id="food-character-card">
+                    <h2 class="food-char-title">🍽️ 오늘의 행운 음식 캐릭터</h2>
+                    <div class="food-char-body">
+                        <div class="food-char-avatar">
+                            <div class="food-char-big-emoji" id="food-char-emoji">🍩</div>
+                            <div class="food-char-face" id="food-char-face">( ˘ᵕ˘ )</div>
+                        </div>
+                        <div class="food-char-info">
+                            <div class="food-char-names">
+                                <span class="food-char-charname" id="food-char-charname">도나짱</span>
+                                <span class="food-char-tag" id="food-char-name">도넛</span>
+                            </div>
+                            <p class="food-char-personality" id="food-char-personality">달달하고 긍정적인 에너지 발산형</p>
+                            <ul class="food-char-traits" id="food-char-traits"></ul>
+                        </div>
+                    </div>
+                    <p class="food-char-tip" id="food-char-tip"></p>
+                </div>
+
+                <!-- Mid-Content Ad -->
+                <div class="ad-slot mid-ad glass-card">
+                    <span class="ad-badge">Sponsor</span>
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-3114463937796990"
+                         data-ad-slot="auto"
+                         data-ad-format="rectangle"
+                         data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+
+                <!-- Retry Button -->
+                <button class="retry-btn" id="retry-btn" type="button">↩ 다시 보기</button>
+            </section>
+
+        </main>
+
+        <!-- ===== HOW IT WORKS SECTION (Content for AdSense quality) ===== -->
+        <section class="info-section">
+            <h2 class="info-title">어떻게 활용하나요? 🌟</h2>
+            <div class="info-grid">
+                <div class="info-card glass-card">
+                    <span class="info-icon">📝</span>
+                    <h3>이름 입력</h3>
+                    <p>오늘 기분과 함께 이름을 입력하면 AI가 당신만의 운세를 분석합니다.</p>
+                </div>
+                <div class="info-card glass-card">
+                    <span class="info-icon">🔮</span>
+                    <h3>운세 확인</h3>
+                    <p>사랑, 직장, 건강, 재물 등 다양한 분야의 오늘 운세를 한눈에 확인하세요.</p>
+                </div>
+                <div class="info-card glass-card">
+                    <span class="info-icon">🎁</span>
+                    <h3>행운 아이템</h3>
+                    <p>오늘의 운세와 매칭되는 귀여운 행운의 캐릭터와 음식으로 하루를 밝게 시작하세요!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="site-footer">
+            <p>© 2026 Saju Day by Day. 오늘도 좋은 하루 보내세요! 🌈</p>
+            <p class="footer-disclaimer">본 운세는 오락 목적으로 제공됩니다. 모든 결정은 본인의 판단으로 하세요.</p>
+        </footer>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

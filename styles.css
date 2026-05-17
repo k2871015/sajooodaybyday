@@ -1,0 +1,847 @@
+/* ===========================
+   SAJU DAY BY DAY - styles.css
+   Premium Cute Fortune Theme
+   =========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+/* ===== CSS Variables ===== */
+:root {
+    --bg-dark: #0d0d1a;
+    --bg-card: rgba(255, 255, 255, 0.06);
+    --border: rgba(255, 255, 255, 0.12);
+    --border-hover: rgba(255, 255, 255, 0.25);
+
+    /* Brand Colors */
+    --pink: #ff6eb4;
+    --purple: #a78bfa;
+    --blue: #60a5fa;
+    --mint: #34d399;
+    --yellow: #fbbf24;
+    --coral: #fb7185;
+
+    /* Text */
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-dim: #64748b;
+
+    /* Fonts */
+    --font-ko: 'Noto Sans KR', sans-serif;
+    --font-en: 'Outfit', sans-serif;
+
+    /* Radii */
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 28px;
+    --radius-xl: 36px;
+}
+
+/* ===== Reset ===== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-ko);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ===== Animated Background Blobs ===== */
+.blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 0;
+    animation: blob-float 20s infinite alternate ease-in-out;
+}
+
+.blob-1 {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--pink), var(--purple));
+    top: -150px; left: -150px;
+    animation-duration: 22s;
+}
+
+.blob-2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, var(--blue), var(--mint));
+    bottom: -100px; right: -100px;
+    animation-duration: 18s;
+    animation-direction: alternate-reverse;
+}
+
+.blob-3 {
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, var(--yellow), var(--coral));
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation-duration: 25s;
+}
+
+@keyframes blob-float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 20px) scale(1.1); }
+}
+
+/* ===== Layout ===== */
+.page-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+/* ===== Glassmorphism Card ===== */
+.glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Header ===== */
+.site-header {
+    text-align: center;
+    padding: 2.5rem 0 1.5rem;
+    animation: fade-up 0.8s ease-out;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 0.75rem;
+}
+
+.logo-icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 0 20px rgba(255, 110, 180, 0.6));
+    animation: pulse-glow 3s infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { filter: drop-shadow(0 0 15px rgba(255, 110, 180, 0.5)); }
+    50% { filter: drop-shadow(0 0 30px rgba(167, 139, 250, 0.9)); }
+}
+
+.logo-text {
+    font-family: var(--font-en);
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--pink), var(--purple), var(--blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.site-tagline {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* ===== Ad Slots ===== */
+.ad-slot {
+    position: relative;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.ad-slot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(255, 110, 180, 0.03) 0%,
+        rgba(96, 165, 250, 0.03) 100%);
+    pointer-events: none;
+}
+
+.ad-badge {
+    position: absolute;
+    top: 8px;
+    left: 14px;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    font-weight: 500;
+}
+
+.leaderboard-ad { min-height: 110px; }
+.mid-ad { min-height: 280px; margin-top: 1.5rem; }
+
+/* ===== Input Section ===== */
+.input-section {
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    animation: fade-up 0.8s ease-out 0.2s both;
+}
+
+.section-title {
+    font-family: var(--font-ko);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.6rem;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 1rem 1.4rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    font-family: var(--font-ko);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-group input[type="text"]:focus {
+    border-color: var(--pink);
+    background: rgba(255, 110, 180, 0.06);
+    box-shadow: 0 0 0 3px rgba(255, 110, 180, 0.15);
+}
+
+.form-group input::placeholder {
+    color: var(--text-dim);
+}
+
+/* ===== Mood Selector ===== */
+.mood-selector {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.mood-btn {
+    padding: 0.65rem 1.2rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-muted);
+    font-family: var(--font-ko);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.mood-btn:hover {
+    border-color: var(--pink);
+    color: var(--text-main);
+}
+
+.mood-btn.active {
+    background: linear-gradient(135deg, rgba(255, 110, 180, 0.2), rgba(167, 139, 250, 0.2));
+    border-color: var(--pink);
+    color: var(--text-main);
+    font-weight: 700;
+    box-shadow: 0 0 15px rgba(255, 110, 180, 0.25);
+}
+
+/* ===== CTA Button ===== */
+.cta-btn {
+    position: relative;
+    width: 100%;
+    padding: 1.1rem;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    border: none;
+    border-radius: var(--radius-md);
+    color: white;
+    font-family: var(--font-ko);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 20px rgba(255, 110, 180, 0.4);
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 110, 180, 0.6);
+}
+
+.cta-btn:active {
+    transform: translateY(0);
+}
+
+.btn-shimmer {
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    60%, 100% { left: 150%; }
+}
+
+/* ===== Result Section ===== */
+.result-section {
+    animation: fade-up 0.6s ease-out;
+}
+
+/* ===== Fortune Card ===== */
+.fortune-card {
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.fortune-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.fortune-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+.fortune-user-name {
+    font-size: 0.9rem;
+    color: var(--pink);
+    font-weight: 700;
+}
+
+/* ===== Score Ring ===== */
+.fortune-score-ring {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: conic-gradient(var(--pink) 0%, var(--purple) var(--score-pct, 80%), rgba(255,255,255,0.05) var(--score-pct, 80%));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    position: relative;
+    box-shadow: 0 0 30px rgba(255, 110, 180, 0.3);
+    transition: all 1s ease;
+}
+
+.score-inner {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.score-number {
+    font-family: var(--font-en);
+    font-size: 2.4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.score-label {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ===== Fortune Category Grid ===== */
+.fortune-category-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.category-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem;
+    text-align: left;
+    transition: all 0.3s ease;
+    animation: slide-in 0.5s ease-out both;
+}
+
+.category-item:hover {
+    border-color: var(--pink);
+    background: rgba(255, 110, 180, 0.06);
+}
+
+.cat-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 0.5rem;
+}
+
+.cat-icon { font-size: 1rem; }
+.cat-name {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cat-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 0.3rem;
+}
+
+.star {
+    font-size: 0.7rem;
+    opacity: 0.25;
+    transition: opacity 0.3s ease;
+}
+
+.star.active { opacity: 1; }
+
+.cat-text {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* ===== Fortune Message ===== */
+.fortune-message-box {
+    background: linear-gradient(135deg,
+        rgba(255, 110, 180, 0.08),
+        rgba(167, 139, 250, 0.08));
+    border: 1px solid rgba(255, 110, 180, 0.2);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+}
+
+.fortune-main-message {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-main);
+    font-weight: 400;
+}
+
+/* ===== Lucky Card ===== */
+.lucky-card {
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg,
+        rgba(255, 110, 180, 0.05),
+        rgba(96, 165, 250, 0.05));
+}
+
+.lucky-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--yellow), var(--coral));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.lucky-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.lucky-item-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.lucky-item-box:hover {
+    transform: translateY(-4px);
+    border-color: var(--pink);
+    box-shadow: 0 8px 24px rgba(255, 110, 180, 0.2);
+}
+
+.lucky-emoji {
+    font-size: 3rem;
+    animation: bounce 2s infinite;
+    line-height: 1.2;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.lucky-label {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.lucky-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.lucky-divider {
+    font-size: 1.8rem;
+    color: var(--pink);
+    font-weight: 900;
+    font-family: var(--font-en);
+    flex-shrink: 0;
+}
+
+.lucky-tip {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--yellow);
+}
+
+/* ===== Retry Button ===== */
+.retry-btn {
+    display: block;
+    width: 100%;
+    padding: 0.9rem;
+    margin: 0 auto 1.5rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    font-family: var(--font-ko);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+    border-color: var(--pink);
+    color: var(--pink);
+}
+
+/* ===== Info Section ===== */
+.info-section {
+    padding: 3rem 0 1rem;
+    animation: fade-up 1s ease-out 0.5s both;
+}
+
+.info-title {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.info-card {
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+}
+
+.info-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.info-card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.info-card p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.site-footer p {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+}
+
+.footer-disclaimer {
+    font-size: 0.72rem !important;
+    color: var(--text-dim) !important;
+    opacity: 0.6;
+}
+
+/* ===== Keyframe Animations ===== */
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* ===== Food Character Card ===== */
+.food-char-card {
+    --food-color: #f97316;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg,
+        rgba(255,255,255,0.04),
+        rgba(255,255,255,0.02));
+    border: 1px solid color-mix(in srgb, var(--food-color) 30%, transparent);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--food-color) 12%, transparent);
+    transition: border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.food-char-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--food-color);
+    filter: brightness(1.4);
+}
+
+.food-char-body {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+}
+
+.food-char-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+
+.food-char-big-emoji {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    animation: char-wobble 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 12px color-mix(in srgb, var(--food-color) 40%, transparent));
+}
+
+@keyframes char-wobble {
+    0%, 100% { transform: rotate(-3deg) scale(1); }
+    50% { transform: rotate(3deg) scale(1.08); }
+}
+
+.food-char-face {
+    font-family: monospace;
+    font-size: 1rem;
+    color: var(--food-color);
+    filter: brightness(1.5);
+    letter-spacing: 1px;
+    font-weight: 700;
+    background: color-mix(in srgb, var(--food-color) 12%, transparent);
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    border: 1px solid color-mix(in srgb, var(--food-color) 30%, transparent);
+}
+
+.food-char-info {
+    flex: 1;
+}
+
+.food-char-names {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.food-char-charname {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--text-main);
+    line-height: 1;
+}
+
+.food-char-tag {
+    font-size: 0.7rem;
+    background: color-mix(in srgb, var(--food-color) 20%, transparent);
+    color: var(--food-color);
+    filter: brightness(1.4);
+    border: 1px solid color-mix(in srgb, var(--food-color) 40%, transparent);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.food-char-personality {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    font-style: italic;
+}
+
+.food-char-traits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.food-char-traits li {
+    font-size: 0.82rem;
+    color: var(--text-main);
+    opacity: 0.85;
+    padding-left: 0.25rem;
+    line-height: 1.4;
+}
+
+.food-char-tip {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    padding: 0.9rem 1.1rem;
+    background: color-mix(in srgb, var(--food-color) 8%, transparent);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--food-color);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 600px) {
+    .page-wrapper {
+        padding: 1.5rem 1rem 3rem;
+    }
+
+    .logo-text { font-size: 1.4rem; }
+    .logo-icon { font-size: 2rem; }
+
+    .input-section, .fortune-card, .lucky-card {
+        padding: 1.75rem 1.5rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lucky-display {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .lucky-divider {
+        transform: rotate(90deg);
+    }
+
+    .fortune-category-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .mood-selector {
+        gap: 0.5rem;
+    }
+
+    .mood-btn {
+        padding: 0.55rem 0.9rem;
+        font-size: 0.82rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .fortune-category-grid {
+        grid-template-columns: 1fr;
+    }
+}
