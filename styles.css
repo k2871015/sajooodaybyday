@@ -644,6 +644,24 @@ body {
     line-height: 1.6;
 }
 
+/* ===== Navigation & Footer Links ===== */
+.top-nav {
+    display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+.top-nav a {
+    color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s;
+}
+.top-nav a:hover { color: var(--pink); }
+
+.footer-nav {
+    display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.2rem; align-items: center;
+}
+.footer-nav a {
+    color: var(--text-dim); text-decoration: none; font-size: 0.8rem; transition: color 0.3s;
+}
+.footer-nav a:hover { color: var(--pink); }
+.footer-nav .divider { color: var(--border); font-size: 0.8rem; }
+
 /* ===== Footer ===== */
 .site-footer {
     text-align: center;
