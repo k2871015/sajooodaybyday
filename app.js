@@ -195,6 +195,7 @@ const FORTUNES = {
 const fortuneBtn = document.getElementById('fortune-btn');
 const retryBtn = document.getElementById('retry-btn');
 const inputSection = document.getElementById('input-section');
+const loadingSection = document.getElementById('loading-section');
 const resultSection = document.getElementById('result-section');
 const moodBtns = document.querySelectorAll('.mood-btn');
 const userNameInput = document.getElementById('user-name');
@@ -317,13 +318,27 @@ function displayFortune(data) {
     gameCard.style.setProperty('--game-color', game.color);
 
     // Show
-    inputSection.style.display = 'none';
     resultSection.style.display = 'block';
     resultSection.scrollIntoView({ behavior:'smooth', block:'start' });
 }
 
-fortuneBtn.addEventListener('click', () => displayFortune(generateFortune()));
-userNameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') displayFortune(generateFortune()); });
+function handleFortuneSubmit() {
+    const data = generateFortune();
+    
+    // Hide input, show loading
+    inputSection.style.display = 'none';
+    loadingSection.style.display = 'block';
+    loadingSection.scrollIntoView({ behavior:'smooth', block:'start' });
+
+    // Simulate 2 seconds loading for AdSense interstitial and anticipation
+    setTimeout(() => {
+        loadingSection.style.display = 'none';
+        displayFortune(data);
+    }, 2000);
+}
+
+fortuneBtn.addEventListener('click', handleFortuneSubmit);
+userNameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleFortuneSubmit(); });
 retryBtn.addEventListener('click', () => {
     resultSection.style.display = 'none';
     inputSection.style.display = 'block';
