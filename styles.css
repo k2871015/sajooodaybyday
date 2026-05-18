@@ -7,23 +7,26 @@
 
 /* ===== CSS Variables ===== */
 :root {
-    --bg-dark: #0d0d1a;
-    --bg-card: rgba(255, 255, 255, 0.06);
+    --bg-dark: #0B0B12;
+    --bg-card: rgba(25, 25, 35, 0.65);
     --border: rgba(255, 255, 255, 0.12);
-    --border-hover: rgba(255, 255, 255, 0.25);
+    --border-hover: rgba(138, 43, 226, 0.5);
 
-    /* Brand Colors */
-    --pink: #ff6eb4;
-    --purple: #a78bfa;
-    --blue: #60a5fa;
+    /* Brand Colors mapped to DESIGN.md */
+    --pink: #FF1493;
+    --purple: #8A2BE2;
+    --blue: #00FFFF;
     --mint: #34d399;
     --yellow: #fbbf24;
     --coral: #fb7185;
+    
+    /* Game specific */
+    --game-color: #F97316;
 
     /* Text */
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
-    --text-dim: #64748b;
+    --text-main: #FFFFFF;
+    --text-muted: #B4B4C8;
+    --text-dim: #78788C;
 
     /* Fonts */
     --font-ko: 'Noto Sans KR', sans-serif;
