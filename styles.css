@@ -242,7 +242,8 @@ body {
     margin-bottom: 0.6rem;
 }
 
-.form-group input[type="text"] {
+.form-group input[type="text"],
+.form-group input[type="date"] {
     width: 100%;
     padding: 1rem 1.4rem;
     background: rgba(255, 255, 255, 0.04);
@@ -253,9 +254,11 @@ body {
     font-size: 1rem;
     transition: all 0.3s ease;
     outline: none;
+    color-scheme: dark;
 }
 
-.form-group input[type="text"]:focus {
+.form-group input[type="text"]:focus,
+.form-group input[type="date"]:focus {
     border-color: var(--pink);
     background: rgba(255, 110, 180, 0.06);
     box-shadow: 0 0 0 3px rgba(255, 110, 180, 0.15);
@@ -923,3 +926,40 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== Share Section ===== */
+.share-section {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.share-title {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+.share-btns {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+.share-btn {
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    color: #fff;
+    font-family: var(--font-ko);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+}
+.share-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+.share-kakao { background-color: #FEE500; color: #000; }
+.share-tg { background-color: #0088cc; }
+.share-link { background-color: #333; border: 1px solid var(--border); }
+

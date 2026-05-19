@@ -124,8 +124,8 @@ const FORTUNES = {
         luckyDirection: '동쪽 ☀️',
         luckyKeyword: '도전',
         messages: [
-            "오늘은 모든 것이 당신의 편! 오래 고민해온 일에 과감히 도전해보세요. 우주가 당신을 응원하고 있습니다. 특히 오전 시간대에 중요한 결정을 내리면 최상의 결과를 얻을 수 있어요. ✨",
-            "당신의 에너지가 최고조에 달하는 하루! 새로운 사람을 만나거나 새로운 일을 시작하기에 더없이 좋은 날이에요. 오늘 만나는 사람이 당신 인생의 귀인이 될 수도 있어요. 🌈",
+            "명리학적 관점에서 볼 때, 오늘은 모든 기운이 귀하의 편에 서는 매우 길한 날입니다. 오랫동안 고민해온 일이나 중요한 계약을 체결하기에 최적의 시기이며, 특히 오전 시간에 긍정적인 결정을 내리시면 좋은 결과를 얻으실 수 있습니다. ✨",
+            "사주 원국의 흐름이 매우 조화로우며 에너지가 최고조에 달하는 하루입니다. 새로운 인연을 만나거나 새로운 프로젝트를 시작하기에 더없이 좋은 날로, 오늘 맺어지는 귀인이 향후 큰 도움을 줄 수 있는 운세입니다. 🌈",
         ],
         categories: [
             { icon:'💕', name:'애정운', stars:5, text:'인연의 꽃이 활짝 피는 날' },
@@ -142,8 +142,8 @@ const FORTUNES = {
         luckyDirection: '남쪽 🌿',
         luckyKeyword: '소통',
         messages: [
-            "전반적으로 순탄한 하루가 예상돼요. 무리하게 욕심내지 않고 꾸준히 나아가면 원하는 결과에 가까워질 수 있어요. 오후에 좋은 소식이 기다리고 있을지도 몰라요. 💫",
-            "긍정적인 에너지가 흐르는 하루! 평소 망설이던 연락을 먼저 해보는 것도 좋아요. 진심을 담은 작은 행동 하나가 큰 결실로 돌아올 수 있답니다. 🍀",
+            "전반적인 오행의 기운이 순조롭게 흘러가는 무난하고 평탄한 하루입니다. 무리한 확장보다는 현재의 자리에서 내실을 다지며 나아가면 긍정적인 결실을 맺을 수 있습니다. 오후 늦은 시간에 기쁜 소식이 당도할 수 있습니다. 💫",
+            "밝고 긍정적인 운기가 맴도는 하루로, 평소 주저하던 일에 대해 한 걸음 내딛어 보시길 권해드립니다. 진심 어린 소통과 배려가 귀하의 덕을 높이고 주변에 좋은 평판을 가져다줄 것입니다. 🍀",
         ],
         categories: [
             { icon:'💕', name:'애정운', stars:4, text:'따뜻한 교류가 기다려요' },
@@ -160,8 +160,8 @@ const FORTUNES = {
         luckyDirection: '서쪽 🌙',
         luckyKeyword: '인내',
         messages: [
-            "오늘은 평범하게 흘러가는 하루! 하지만 평범한 날이야말로 내면을 충전하고 다음 도약을 준비하는 소중한 시간이에요. 서두르지 말고 하나씩 차근차근 해나가세요. 🌿",
-            "크게 기대하지도, 너무 걱정하지도 않아도 되는 날이에요. 오늘은 새로운 것보다는 익숙한 것에 집중하는 게 현명해요. 소소한 행복을 발견하는 것이 오늘의 미션! ☕",
+            "운기의 변동성이 적고 잔잔한 하루가 될 것입니다. 이러한 시기에는 무리한 변화를 도모하기보다, 내면을 성찰하고 향후의 큰 도약을 위해 준비하는 시간을 가지는 것이 이롭습니다. 매사를 차분하게 풀어가시길 바랍니다. 🌿",
+            "특별한 길흉 없이 평탄함이 유지되는 날입니다. 오늘은 새로운 시도보다는 현재 맡은 바 임무에 충실하고, 익숙한 환경 속에서 안정감을 찾는 것이 현명한 선택입니다. 소소한 일상에서 행복을 발견해보세요. ☕",
         ],
         categories: [
             { icon:'💕', name:'애정운', stars:3, text:'솔직한 대화가 관계를 살려요' },
@@ -178,8 +178,8 @@ const FORTUNES = {
         luckyDirection: '북쪽 ⭐',
         luckyKeyword: '휴식',
         messages: [
-            "오늘은 신중함이 키워드! 중요한 결정이나 큰 투자는 잠시 미루는 게 좋아요. 대신 평소 미뤄왔던 정리나 준비를 하기에 딱 좋은 날이에요. 내일을 위해 오늘을 아껴요. 🛡️",
-            "작은 실수에 주의가 필요한 날이에요. 이런 날일수록 주변 사람들과 함께하면 큰 힘이 됩니다. 혼자 끙끙 앓지 말고 가까운 사람에게 털어놓아 보세요. 💪",
+            "운기가 다소 정체되어 신중함이 요구되는 하루입니다. 중대한 결정이나 금전적인 투자는 잠시 보류하시는 것이 좋으며, 주위 사람과의 마찰을 피하기 위해 언행에 각별히 유의하시길 권해드립니다. 🛡️",
+            "사소한 실수나 착오가 발생하기 쉬운 운세입니다. 독단적인 판단보다는 주변의 조언을 귀담아듣고, 매사를 한 번 더 꼼꼼히 점검하는 지혜가 필요합니다. 무리하지 마시고 심신의 휴식을 취하세요. 💪",
         ],
         categories: [
             { icon:'💕', name:'애정운', stars:2, text:'오해가 생기지 않도록 주의' },
@@ -199,6 +199,7 @@ const loadingSection = document.getElementById('loading-section');
 const resultSection = document.getElementById('result-section');
 const moodBtns = document.querySelectorAll('.mood-btn');
 const userNameInput = document.getElementById('user-name');
+const userDobInput = document.getElementById('user-dob');
 let selectedMood = 'happy';
 
 moodBtns.forEach(btn => {
@@ -214,11 +215,11 @@ function seededRandom(seed) {
     let x = Math.sin(seed + 1) * 10000;
     return x - Math.floor(x);
 }
-function generateSeed(name) {
+function generateSeed(name, dob) {
     const today = new Date();
     const dateStr = `${today.getFullYear()}${today.getMonth()}${today.getDate()}`;
     let hash = 0;
-    const str = name + dateStr + selectedMood;
+    const str = name + dob + dateStr + selectedMood;
     for (let i = 0; i < str.length; i++) {
         hash = ((hash << 5) - hash) + str.charCodeAt(i);
         hash |= 0;
@@ -229,7 +230,8 @@ function generateSeed(name) {
 // --- Generate ---
 function generateFortune() {
     const name = userNameInput.value.trim() || '행운이';
-    const seed = generateSeed(name);
+    const dob = userDobInput.value || '알수없음';
+    const seed = generateSeed(name, dob);
     const fortuneTypes = Object.keys(FORTUNES);
     const fortuneKey = fortuneTypes[Math.floor(seededRandom(seed) * fortuneTypes.length)];
     const fortune = FORTUNES[fortuneKey];
@@ -343,6 +345,44 @@ retryBtn.addEventListener('click', () => {
     resultSection.style.display = 'none';
     inputSection.style.display = 'block';
     inputSection.scrollIntoView({ behavior:'smooth', block:'start' });
+});
+
+// --- Share Functions ---
+const shareKakaoBtn = document.getElementById('share-kakao');
+const shareTgBtn = document.getElementById('share-tg');
+const shareLinkBtn = document.getElementById('share-link');
+
+function getShareText() {
+    return `[Saju Day by Day] ${document.getElementById('fortune-user-name').textContent}\n운세 점수: ${document.getElementById('score-number').textContent}점\n행운의 색: ${document.getElementById('lucky-color-name').textContent}\n지금 바로 확인해보세요! 👉 ${window.location.href}`;
+}
+
+shareKakaoBtn.addEventListener('click', async () => {
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: '오늘의 운세 | Saju Day by Day',
+                text: getShareText(),
+                url: window.location.href
+            });
+        } catch (err) {
+            console.log('Share canceled or failed', err);
+        }
+    } else {
+        alert('현재 브라우저에서는 기본 공유 기능을 지원하지 않습니다. 링크 복사를 이용해주세요!');
+    }
+});
+
+shareTgBtn.addEventListener('click', () => {
+    const text = encodeURIComponent(getShareText());
+    window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${text}`, '_blank');
+});
+
+shareLinkBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(getShareText()).then(() => {
+        alert('운세 결과가 클립보드에 복사되었습니다! 🔗');
+    }).catch(err => {
+        alert('링크 복사에 실패했습니다.');
+    });
 });
 
 });
