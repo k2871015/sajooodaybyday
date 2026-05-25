@@ -215,11 +215,11 @@ function seededRandom(seed) {
     let x = Math.sin(seed + 1) * 10000;
     return x - Math.floor(x);
 }
-function generateSeed(name, dob) {
+function generateSeed(name, dob, cardElement) {
     const today = new Date();
     const dateStr = `${today.getFullYear()}${today.getMonth()}${today.getDate()}`;
     let hash = 0;
-    const str = name + dob + dateStr + selectedMood;
+    const str = name + dob + dateStr + selectedMood + cardElement;
     for (let i = 0; i < str.length; i++) {
         hash = ((hash << 5) - hash) + str.charCodeAt(i);
         hash |= 0;
@@ -228,10 +228,10 @@ function generateSeed(name, dob) {
 }
 
 // --- Generate ---
-function generateFortune() {
+function generateFortune(cardElement) {
     const name = userNameInput.value.trim() || '행운이';
     const dob = userDobInput.value || '알수없음';
-    const seed = generateSeed(name, dob);
+    const seed = generateSeed(name, dob, cardElement);
     const fortuneTypes = Object.keys(FORTUNES);
     const fortuneKey = fortuneTypes[Math.floor(seededRandom(seed) * fortuneTypes.length)];
     const fortune = FORTUNES[fortuneKey];
@@ -248,7 +248,31 @@ function generateFortune() {
     const game = gamePool[gameIdx];
 
     const luckyNum = fortune.luckyNumber();
-    return { name, fortune, fortuneKey, score, message, character, game, luckyNum };
+
+    // Generate 5 elements balance scores (20 to 100)
+    const woodScore = Math.floor(seededRandom(seed+10) * 80) + 20;
+    const fireScore = Math.floor(seededRandom(seed+11) * 80) + 20;
+    const earthScore = Math.floor(seededRandom(seed+12) * 80) + 20;
+    const metalScore = Math.floor(seededRandom(seed+13) * 80) + 20;
+    const waterScore = Math.floor(seededRandom(seed+14) * 80) + 20;
+
+    // Elements remedy list
+    const elements = [
+        { name: '목 (木) - 나무', score: woodScore, remedy: '오늘 부족한 나무의 기운을 보완하기 위해 녹색 의상이나 소품을 활용하고, 신선한 샐러드를 섭취하거나 식물이 가득한 야외 공원에서 산책을 해보세요. 추천 게임인 <a href="https://store.steampowered.com/app/413150/Stardew_Valley/" target="_blank" style="color: var(--pink); text-decoration: underline;">Stardew Valley</a>처럼 대지에서 작물을 키우는 따뜻한 기운이 큰 활력을 불어넣어 줄 것입니다. 🌳' },
+        { name: '화 (火) - 불', score: fireScore, remedy: '오늘 부족한 불의 기운을 보완하기 위해 붉은색 계열의 포인트 의상을 코디하고, 따뜻하거나 매콤한 음식을 드셔보세요. 추천 게임인 <a href="https://store.steampowered.com/app/1145360/Hades/" target="_blank" style="color: var(--pink); text-decoration: underline;">Hades</a>처럼 에너지를 불태우는 시원한 액션 장르를 플레이하는 것이 내면의 추진력을 충전하는 데 도움이 됩니다. 🔥' },
+        { name: '토 (土) - 흙', score: earthScore, remedy: '오늘 부족한 흙의 기운을 보완하기 위해 황색/브라운 톤 소품을 사용하거나 땅을 디디며 천천히 걷는 시간을 추천합니다. 추천 게임인 <a href="https://store.steampowered.com/app/1657630/Slime_Rancher_2/" target="_blank" style="color: var(--pink); text-decoration: underline;">Slime Rancher 2</a>처럼 귀여운 생명체들을 대지 위에 방목하며 자연스러운 여유를 즐겨보는 것도 훌륭한 처방입니다. ⛰️' },
+        { name: '금 (金) - 쇠/금속', score: metalScore, remedy: '오늘 부족한 금(쇠)의 기운을 보완하기 위해 세련된 실버/화이트 액세서리를 착용하거나 마음을 가라앉히는 차분한 음악을 감상해 보세요. 추천 게임인 <a href="https://store.steampowered.com/app/367520/Hollow_Knight/" target="_blank" style="color: var(--pink); text-decoration: underline;">Hollow Knight</a>처럼 집중력을 모으고 절도 있게 나아가는 태도가 행운을 가져다줄 것입니다. 🪙' },
+        { name: '수 (水) - 물', score: waterScore, remedy: '오늘 부족한 물의 기운을 보완하기 위해 블루 계열 컬러 소품을 착용하고, 충분한 수분 섭취를 해주세요. 추천 게임인 <a href="https://store.steampowered.com/app/1868140/DAVE_THE_DIVER/" target="_blank" style="color: var(--pink); text-decoration: underline;">Dave the Diver</a>처럼 푸른 바다 깊은 곳을 유유히 탐험하며 깊고 유연한 사고의 에너지를 충전하는 것을 권해 드립니다. 🌊' }
+    ];
+
+    // Sort to find the weakest element
+    elements.sort((a, b) => a.score - b.score);
+    const weakestElement = elements[0];
+
+    return { 
+        name, fortune, fortuneKey, score, message, character, game, luckyNum,
+        woodScore, fireScore, earthScore, metalScore, waterScore, weakestElement 
+    };
 }
 
 // --- Stars ---
@@ -259,10 +283,29 @@ function renderStars(count) {
     }
     return html;
 }
+function getReceiptStars(count) {
+    return '★'.repeat(count) + '☆'.repeat(5 - count);
+}
+
+// --- Radar Chart point helper ---
+function getRadarPoint(index, score) {
+    const angleMap = [
+        -Math.PI / 2,                    // Wood
+        -Math.PI / 2 + (2 * Math.PI / 5), // Fire
+        -Math.PI / 2 + (4 * Math.PI / 5), // Earth
+        -Math.PI / 2 + (6 * Math.PI / 5), // Metal
+        -Math.PI / 2 + (8 * Math.PI / 5)  // Water
+    ];
+    // R = 75 is max outer circle radius
+    const r = (score / 100) * 75;
+    const x = 100 + r * Math.cos(angleMap[index]);
+    const y = 100 + r * Math.sin(angleMap[index]);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+}
 
 // --- Display ---
 function displayFortune(data) {
-    const { name, fortune, score, message, character, game, luckyNum } = data;
+    const { name, fortune, score, message, character, game, luckyNum, woodScore, fireScore, earthScore, metalScore, waterScore, weakestElement } = data;
 
     // Date
     const today = new Date();
@@ -296,6 +339,18 @@ function displayFortune(data) {
         grid.appendChild(el);
     });
 
+    // Render SVG Radar Chart
+    const polygon = document.getElementById('radar-polygon');
+    const pWood = getRadarPoint(0, woodScore);
+    const pFire = getRadarPoint(1, fireScore);
+    const pEarth = getRadarPoint(2, earthScore);
+    const pMetal = getRadarPoint(3, metalScore);
+    const pWater = getRadarPoint(4, waterScore);
+    polygon.setAttribute('points', `${pWood} ${pFire} ${pEarth} ${pMetal} ${pWater}`);
+
+    // Update prescription
+    document.getElementById('prescription-content').innerHTML = weakestElement.remedy;
+
     // Fortune message
     document.getElementById('fortune-message').textContent = message;
 
@@ -319,25 +374,110 @@ function displayFortune(data) {
     playBtn.textContent = game.platform === 'Steam' ? '▶ Steam에서 보기' : '▶ 바로 플레이하기';
     gameCard.style.setProperty('--game-color', game.color);
 
-    // Show
+    // Update Lucky Receipt Content
+    document.getElementById('receipt-date').textContent = today.toLocaleDateString('ko-KR', { year:'numeric', month:'2-digit', day:'2-digit' }).replace(/\. /g, '.').replace(/\.$/, '');
+    document.getElementById('receipt-name').textContent = name;
+    document.getElementById('receipt-score').textContent = `${score} PTS`;
+    
+    // Receipt Category Stars (Love, Work, Wealth, Health, Social)
+    document.getElementById('receipt-star-love').textContent = getReceiptStars(fortune.categories[0].stars);
+    document.getElementById('receipt-star-work').textContent = getReceiptStars(fortune.categories[1].stars);
+    document.getElementById('receipt-star-wealth').textContent = getReceiptStars(fortune.categories[2].stars);
+    document.getElementById('receipt-star-health').textContent = getReceiptStars(fortune.categories[3].stars);
+    document.getElementById('receipt-star-social').textContent = getReceiptStars(fortune.categories[4].stars);
+
+    // Receipt extras
+    document.getElementById('receipt-color').textContent = lc.name.toUpperCase();
+    document.getElementById('receipt-number').textContent = luckyNum;
+    document.getElementById('receipt-animal').textContent = `${character.emoji} ${character.name.toUpperCase()}`;
+    document.getElementById('receipt-stamp-emoji').textContent = character.emoji;
+
+    // Barcode Number
+    const barcodeDateStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}${String(today.getDate()).padStart(2,'0')}`;
+    document.getElementById('receipt-barcode-number').textContent = `SAJU-${barcodeDateStr}-${score}`;
+
+    // Show result
     resultSection.style.display = 'block';
     resultSection.scrollIntoView({ behavior:'smooth', block:'start' });
 }
 
-function handleFortuneSubmit() {
-    const data = generateFortune();
-    
-    // Hide input, show loading
-    inputSection.style.display = 'none';
-    loadingSection.style.display = 'block';
-    loadingSection.scrollIntoView({ behavior:'smooth', block:'start' });
+// --- Flow control ---
+let isProcessingTarot = false;
 
-    // Simulate 2 seconds loading for AdSense interstitial and anticipation
-    setTimeout(() => {
-        loadingSection.style.display = 'none';
-        displayFortune(data);
-    }, 2000);
+// DOM references for Tarot Section
+const tarotSection = document.getElementById('tarot-section');
+const tarotCards = document.querySelectorAll('.tarot-card');
+const downloadReceiptBtn = document.getElementById('download-receipt-btn');
+
+function handleFortuneSubmit() {
+    const name = userNameInput.value.trim();
+    if (!name) {
+        alert('이름을 입력해 주세요! 🔮');
+        userNameInput.focus();
+        return;
+    }
+    
+    // Reset cards flipping state
+    tarotCards.forEach(card => card.classList.remove('flipped'));
+    isProcessingTarot = false;
+
+    // Transition from Input Section to Tarot Selection Section
+    inputSection.style.display = 'none';
+    tarotSection.style.display = 'block';
+    tarotSection.scrollIntoView({ behavior:'smooth', block:'start' });
 }
+
+// Attach Tarot Card Click Handlers
+tarotCards.forEach(card => {
+    card.addEventListener('click', () => {
+        if (isProcessingTarot || card.classList.contains('flipped')) return;
+        isProcessingTarot = true;
+
+        // Reveal card (add flipped class)
+        card.classList.add('flipped');
+        const element = card.dataset.element;
+
+        // Generate fortune data based on clicked card's element
+        const data = generateFortune(element);
+
+        // Transition from Tarot card to loading section
+        setTimeout(() => {
+            tarotSection.style.display = 'none';
+            loadingSection.style.display = 'block';
+            loadingSection.scrollIntoView({ behavior:'smooth', block:'start' });
+
+            // Transition from loading section to result section after AdSense/cosmic delay
+            setTimeout(() => {
+                loadingSection.style.display = 'none';
+                displayFortune(data);
+                isProcessingTarot = false;
+            }, 1800);
+        }, 1200);
+    });
+});
+
+// Download Lucky Receipt as PNG Image
+downloadReceiptBtn.addEventListener('click', () => {
+    const captureArea = document.getElementById('receipt-capture-wrapper');
+    const name = document.getElementById('receipt-name').textContent || 'saju';
+    
+    // Temporarily apply exact dimensions for perfect canvas capture
+    // html2canvas works best when capturing solid elements
+    html2canvas(captureArea, {
+        backgroundColor: '#0b0b12',
+        scale: 2, // 2x high resolution
+        useCORS: true,
+        logging: false
+    }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `saju-receipt-${name}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    }).catch(err => {
+        console.error('Receipt download error:', err);
+        alert('영수증 이미지 다운로드에 실패했습니다. 다시 시도해 주세요.');
+    });
+});
 
 fortuneBtn.addEventListener('click', handleFortuneSubmit);
 userNameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleFortuneSubmit(); });
