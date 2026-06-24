@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사주 블로그 | 사주오늘바이데이 — 오늘의 사주·운세·궁합 완전 정복</title>
+  <meta name="description" content="사주팔자, 오늘의 운세, 궁합, 용신, 일주 분석까지. 사주오늘바이데이의 사주 전문 블로그에서 깊이 있는 명리학 지식을 매일 만나보세요.">
+  <meta property="og:title" content="사주 블로그 | 사주오늘바이데이">
+  <meta property="og:description" content="사주팔자부터 오늘의 운세, 궁합, 용신까지 — 명리학의 모든 것을 쉽고 깊이 있게 다룹니다.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://sajooodaybyday.pages.dev/blog/">
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans KR', var(--font-sans); }
+
+    .blog-hero {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+    .blog-hero .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(226, 201, 116, 0.08);
+      border: 1px solid rgba(226, 201, 116, 0.2);
+      color: var(--color-gold);
+      font-size: 0.8rem;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.2rem;
+    }
+    .blog-hero h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #f5f4f6 30%, var(--color-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    .blog-hero p {
+      color: var(--color-text-secondary);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* Category tabs */
+    .category-tabs {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .cat-tab {
+      padding: 0.45rem 1.1rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.07);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      text-decoration: none;
+    }
+    .cat-tab:hover, .cat-tab.active {
+      background: rgba(226, 201, 116, 0.1);
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+    }
+
+    /* Blog Grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
+
+    .blog-card {
+      background: rgba(20,16,26,0.7);
+      border: 1px solid rgba(226,201,116,0.12);
+      border-radius: 20px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+    }
+    .blog-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(226,201,116,0.35);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+
+    .card-thumb {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(20,16,26,0.9));
+    }
+
+    .card-body {
+      padding: 1.4rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-category {
+      font-size: 0.73rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+    .card-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.1rem;
+      color: var(--color-text-primary);
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+      transition: var(--transition-smooth);
+    }
+    .blog-card:hover .card-title { color: var(--color-gold); }
+    .card-excerpt {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+    .card-meta {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding-top: 0.75rem;
+    }
+    .card-read {
+      color: var(--color-gold);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    /* Featured (large) card */
+    .blog-card.featured {
+      grid-column: span 2;
+      flex-direction: row;
+    }
+    .blog-card.featured .card-thumb {
+      width: 260px;
+      min-width: 260px;
+      height: auto;
+      font-size: 5rem;
+    }
+    @media (max-width: 900px) {
+      .blog-card.featured {
+        grid-column: span 1;
+        flex-direction: column;
+      }
+      .blog-card.featured .card-thumb { width: 100%; height: 140px; }
+    }
+    .blog-card.featured .card-title { font-size: 1.35rem; }
+
+    /* Ad slot clean */
+    .adsense-slot { margin: 2rem auto; max-width: 900px; }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    .page-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(226,201,116,0.2);
+      background: transparent;
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .page-btn:hover, .page-btn.active {
+      background: rgba(226,201,116,0.1);
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+    }
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3114463937796990" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="particles" id="particles-js"></div>
+
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon"></span>
+        사주오늘바이데이
+      </a>
+      <nav>
+        <ul>
+          <li><a href="../index.html">기억 복원</a></li>
+          <li><a href="index.html" class="active">사주 블로그</a></li>
+          <li><a href="../about.html">소개</a></li>
+          <li><a href="../contact.html">문의</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <button class="icon-btn" id="music-toggle-btn">🔇 사운드 끔</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="blog-hero">
+      <div class="badge">⭐ 사주 전문 블로그</div>
+      <h1>사주오늘바이데이<br>사주 백과사전</h1>
+      <p>사주팔자부터 오늘의 운세, 궁합, 용신, 일주까지 — 명리학의 깊은 세계를 쉽고 정확하게 풀어드립니다.</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="category-tabs">
+      <a class="cat-tab active" href="index.html">전체</a>
+      <a class="cat-tab" href="index.html">사주 기초</a>
+      <a class="cat-tab" href="index.html">운세·신살</a>
+      <a class="cat-tab" href="index.html">궁합·연애운</a>
+      <a class="cat-tab" href="index.html">직업·재물운</a>
+      <a class="cat-tab" href="index.html">일주 분석</a>
+      <a class="cat-tab" href="index.html">실전 풀이</a>
+    </div>
+
+    <!-- Top AdSense -->
+    <div class="adsense-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3114463937796990"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="blog-grid">
+
+      <!-- Featured Post -->
+      <a href="saju-basics.html" class="blog-card featured">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #1a0a2e, #2d1554);">🌌</div>
+        <div class="card-body">
+          <div class="card-category">사주 기초 · 필독</div>
+          <div class="card-title">사주팔자란 무엇인가? — 태어난 순간이 운명을 결정하는 이유 완전 정리</div>
+          <div class="card-excerpt">사주(四柱)는 연·월·일·시 네 기둥, 팔자(八字)는 그 여덟 글자. 왜 태어난 시간이 평생의 기운을 결정한다고 보는 걸까요? 음양오행의 원리부터 천간·지지의 구조까지 처음 접하는 분도 이해할 수 있도록 차근차근 설명합니다.</div>
+          <div class="card-meta">
+            <span>2026년 6월 20일 · 사주 기초</span>
+            <span class="card-read">읽기 →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="yongshin-guide.html" class="blog-card">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #0a1a0a, #1a3a1a);">🌿</div>
+        <div class="card-body">
+          <div class="card-category">사주 핵심</div>
+          <div class="card-title">내 사주의 용신(用神) 찾는 법 — 평생 나를 살려주는 기운</div>
+          <div class="card-excerpt">사주 공부에서 가장 중요하고 어렵다는 '용신'. 내 사주에서 가장 필요한 오행이 무엇인지 판단하는 기본 원리와 실전 예시를 소개합니다.</div>
+          <div class="card-meta">
+            <span>2026년 6월 18일 · 사주 핵심</span>
+            <span class="card-read">읽기 →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="ilju-analysis.html" class="blog-card">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #1a1000, #3a2800);">🏮</div>
+        <div class="card-body">
+          <div class="card-category">일주 분석</div>
+          <div class="card-title">60개 일주(日柱) 완전 분석 — 내 일주의 성격·직업·연애 특성</div>
+          <div class="card-excerpt">갑자(甲子)부터 계해(癸亥)까지 60갑자 일주별 특성을 정리합니다. 내 일간이 갑(甲)인지 을(乙)인지에 따라 성격과 인생 패턴이 어떻게 달라지는지 살펴보세요.</div>
+          <div class="card-meta">
+            <span>2026년 6월 16일 · 일주 분석</span>
+            <span class="card-read">읽기 →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="gungham-guide.html" class="blog-card">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #1a0010, #3a0028);">💕</div>
+        <div class="card-body">
+          <div class="card-category">궁합·연애운</div>
+          <div class="card-title">사주 궁합 완전 가이드 — 잘 맞는 일주와 피해야 할 충(沖) 관계</div>
+          <div class="card-excerpt">단순 띠 궁합을 넘어 일간합(日干合), 지지충(地支沖), 원진살까지. 두 사람의 사주 에너지가 어떻게 반응하는지 명리학적으로 풀어드립니다.</div>
+          <div class="card-meta">
+            <span>2026년 6월 14일 · 궁합·연애운</span>
+            <span class="card-read">읽기 →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="fortune-2026.html" class="blog-card">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #001020, #002040);">🔮</div>
+        <div class="card-body">
+          <div class="card-category">2026 병오년 운세</div>
+          <div class="card-title">2026 병오년(丙午年) 띠별 운세 총정리 — 12간지 완전 분석</div>
+          <div class="card-excerpt">불의 해, 병오년(丙午年)이 각 띠에 미치는 영향을 사주 명리학으로 분석합니다. 쥐띠부터 돼지띠까지 재물·건강·연애·직업운을 한눈에 확인하세요.</div>
+          <div class="card-meta">
+            <span>2026년 6월 12일 · 연간 운세</span>
+            <span class="card-read">읽기 →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="sinsal-guide.html" class="blog-card">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #10001a, #200030);">⚡</div>
+        <div class="card-body">
+          <div class="card-category">신살·특수 기운</div>
+          <div class="card-title">사주 신살(神殺) 총정리 — 도화살·역마살·괴강살·백호살의 실제 의미</div>
+          <div class="card-excerpt">도화살이 있다고 바람기가 많은 게 아닙니다. 역마살이 있다고 무조건 이사를 다니는 것도 아니죠. 신살의 진짜 의미와 현대적 해석법을 알려드립니다.</div>
+          <div class="card-meta">
+            <span>2026년 6월 10일 · 신살</span>
+            <span class="card-read">읽기 →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="money-fortune.html" class="blog-card">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #0a0a00, #2a2a00);">💰</div>
+        <div class="card-body">
+          <div class="card-category">직업·재물운</div>
+          <div class="card-title">사주로 보는 재물운 — 편재·정재·식신이 돈과 직결되는 이유</div>
+          <div class="card-excerpt">사주에서 돈과 관련된 기운은 어디에 있을까요? 편재(偏財)와 정재(正財)의 차이, 식신(食神)이 재물을 만드는 원리, 그리고 내 사주에서 재물운을 높이는 법을 분석합니다.</div>
+          <div class="card-meta">
+            <span>2026년 6월 8일 · 재물운</span>
+            <span class="card-read">읽기 →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="daeun-seoun.html" class="blog-card">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #001a10, #003020);">🌊</div>
+        <div class="card-body">
+          <div class="card-category">대운·세운</div>
+          <div class="card-title">대운(大運)과 세운(歲運)의 차이 — 10년 vs 1년, 운의 흐름 읽는 법</div>
+          <div class="card-excerpt">사주 원국이 타고난 그릇이라면, 대운과 세운은 그 그릇에 담기는 물입니다. 대운이 바뀌는 시기를 어떻게 감지하고, 세운의 기운을 어떻게 활용해야 할지 알려드립니다.</div>
+          <div class="card-meta">
+            <span>2026년 6월 6일 · 대운·세운</span>
+            <span class="card-read">읽기 →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="job-saju.html" class="blog-card">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #1a0a00, #3a1800);">🎯</div>
+        <div class="card-body">
+          <div class="card-category">직업 적성</div>
+          <div class="card-title">사주로 보는 직업 적성 — 오행별 천직(天職)과 잘 맞는 분야</div>
+          <div class="card-excerpt">목화토금수 다섯 기운이 강한 사람에게는 각각 다른 천직이 있습니다. 창의성이 강한 목(木) 기운, 카리스마 넘치는 화(火) 기운, 안정을 추구하는 토(土) 기운의 직업 특성을 정리합니다.</div>
+          <div class="card-meta">
+            <span>2026년 6월 4일 · 직업 적성</span>
+            <span class="card-read">읽기 →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Middle AdSense -->
+    <div class="adsense-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3114463937796990"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Second Row -->
+    <div class="blog-grid">
+
+      <a href="saju-study.html" class="blog-card">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #001520, #002535);">📚</div>
+        <div class="card-body">
+          <div class="card-category">사주 공부</div>
+          <div class="card-title">사주 공부 입문 완전 가이드 — 어디서부터 시작해야 할까?</div>
+          <div class="card-excerpt">막막한 명리학, 어떤 순서로 공부해야 할까요? 음양→오행→천간지지→십신→신살 순으로 체계적으로 접근하는 입문 로드맵을 정리했습니다.</div>
+          <div class="card-meta">
+            <span>2026년 6월 2일 · 사주 입문</span>
+            <span class="card-read">읽기 →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="saju-vs-tarot.html" class="blog-card">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #1a0018, #30002a);">🃏</div>
+        <div class="card-body">
+          <div class="card-category">비교 분석</div>
+          <div class="card-title">사주 vs 타로 vs 점성술 — 운명을 보는 세 가지 방식의 차이점</div>
+          <div class="card-excerpt">동양의 사주명리, 서양의 타로와 점성술. 모두 '운명'을 이야기하지만 접근 방식이 전혀 다릅니다. 세 가지 방법의 철학적 차이와 각각의 장단점을 비교 분석합니다.</div>
+          <div class="card-meta">
+            <span>2026년 5월 30일 · 비교 분석</span>
+            <span class="card-read">읽기 →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="chilseong-saju.html" class="blog-card">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #0a001a, #18003a);">✨</div>
+        <div class="card-body">
+          <div class="card-category">신살 심화</div>
+          <div class="card-title">칠살(七殺)과 편관(偏官) — 강렬한 카리스마 뒤에 숨겨진 양날의 칼</div>
+          <div class="card-excerpt">칠살·편관은 사주에서 가장 강한 에너지 중 하나입니다. 제대로 쓰면 지도자, 못 쓰면 적을 만드는 이 기운의 정체와 현실적 활용법을 알아봅니다.</div>
+          <div class="card-meta">
+            <span>2026년 5월 28일 · 신살 심화</span>
+            <span class="card-read">읽기 →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Bottom AdSense -->
+    <div class="adsense-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3114463937796990"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">›</button>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo" style="padding:0;">
+            <span class="logo-icon"></span>
+            사주오늘바이데이
+          </a>
+          <p>사주오늘바이데이(sajooodaybyday.pages.dev)는 명리학 기반 사주팔자와 오늘의 운세 정보를 제공하는 감성 사주 플랫폼입니다.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>사주 블로그</h4>
+            <ul>
+              <li><a href="saju-basics.html">사주 기초</a></li>
+              <li><a href="yongshin-guide.html">용신 찾기</a></li>
+              <li><a href="gungham-guide.html">궁합 가이드</a></li>
+              <li><a href="fortune-2026.html">2026 운세</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>정책</h4>
+            <ul>
+              <li><a href="../privacy.html">개인정보처리방침</a></li>
+              <li><a href="../terms.html">이용약관</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 사주오늘바이데이. All rights reserved.</p>
+        <p style="font-size:0.75rem;opacity:0.75;">본 사이트(sajooodaybyday.pages.dev)는 명리학 교육 정보를 제공하며, Google AdSense 정책을 완벽히 준수합니다.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../app.js"></script>
+</body>
+</html>
