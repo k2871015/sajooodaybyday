@@ -1676,3 +1676,110 @@ body {
 .blog-mini-excerpt { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.8rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
 .blog-mini-meta { font-size: 0.72rem; color: var(--text-muted); opacity: 0.8; }
 
+/* ===== Ad Loading Modal (Monetization) ===== */
+.ad-modal {
+    position: fixed;
+    z-index: 1100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(6, 6, 10, 0.88);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: fadein 0.3s ease-out;
+}
+
+.ad-modal-content {
+    background: linear-gradient(135deg, rgba(20, 15, 38, 0.95), rgba(10, 8, 22, 0.98)) !important;
+    border: 1px solid rgba(138, 43, 226, 0.3) !important;
+    box-shadow: 0 0 35px rgba(138, 43, 226, 0.25) !important;
+    max-width: 480px;
+    width: 100%;
+    border-radius: var(--radius-md) !important;
+    padding: 2rem;
+    text-align: center;
+}
+
+.ad-modal-header {
+    margin-bottom: 1.5rem;
+}
+
+.ad-modal-loader {
+    display: inline-block;
+    font-size: 2.2rem;
+    animation: rotate 2s linear infinite;
+    margin-bottom: 0.75rem;
+}
+
+.ad-modal-header h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.ad-modal-header p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.timer-countdown {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 20, 147, 0.1);
+    border: 2px solid var(--pink);
+    color: var(--pink);
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin-top: 1rem;
+    box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
+}
+
+.ad-modal-body {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.75rem 0.5rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ad-modal-label {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.ad-modal-footer {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    opacity: 0.6;
+    line-height: 1.4;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+

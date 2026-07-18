@@ -408,6 +408,8 @@ let isProcessingTarot = false;
 const tarotSection = document.getElementById('tarot-section');
 const tarotCards = document.querySelectorAll('.tarot-card');
 const downloadReceiptBtn = document.getElementById('download-receipt-btn');
+const adModal = document.getElementById('adModal');
+const timerCount = document.getElementById('timerCount');
 
 function handleFortuneSubmit() {
     const name = userNameInput.value.trim();
@@ -456,27 +458,47 @@ tarotCards.forEach(card => {
     });
 });
 
-// Download Lucky Receipt as PNG Image
+// Download Lucky Receipt as PNG Image with Ad Loading Delay
 downloadReceiptBtn.addEventListener('click', () => {
     const captureArea = document.getElementById('receipt-capture-wrapper');
     const name = document.getElementById('receipt-name').textContent || 'saju';
     
-    // Temporarily apply exact dimensions for perfect canvas capture
-    // html2canvas works best when capturing solid elements
-    html2canvas(captureArea, {
-        backgroundColor: '#0b0b12',
-        scale: 2, // 2x high resolution
-        useCORS: true,
-        logging: false
-    }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = `saju-receipt-${name}.png`;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-    }).catch(err => {
-        console.error('Receipt download error:', err);
-        alert('영수증 이미지 다운로드에 실패했습니다. 다시 시도해 주세요.');
-    });
+    // 1. Show Ad Loading Modal
+    adModal.style.display = 'flex';
+    let timeLeft = 5;
+    timerCount.textContent = timeLeft;
+    
+    // Disable download button to prevent duplicate clicks during count
+    downloadReceiptBtn.disabled = true;
+    
+    // 2. Clear any existing timer and run countdown
+    const countdownInterval = setInterval(() => {
+        timeLeft -= 1;
+        timerCount.textContent = timeLeft;
+        
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            // 3. Hide Modal
+            adModal.style.display = 'none';
+            downloadReceiptBtn.disabled = false;
+            
+            // 4. Trigger actual canvas download
+            html2canvas(captureArea, {
+                backgroundColor: '#0b0b12',
+                scale: 2, // 2x high resolution
+                useCORS: true,
+                logging: false
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `saju-receipt-${name}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                console.error('Receipt download error:', err);
+                alert('영수증 이미지 다운로드에 실패했습니다. 다시 시도해 주세요.');
+            });
+        }
+    }, 1000);
 });
 
 fortuneBtn.addEventListener('click', handleFortuneSubmit);
